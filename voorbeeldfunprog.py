@@ -34,11 +34,10 @@ def toon_filter_menu():
 
 def toon_personeel():
     tabel = []
-    tabel.append(["Personeelsnummer", "Naam", "Geslacht","Startjaar","Afdeling","Loon"])
-
+    tabel.append(["Personeelsnummer", "Naam", "Geslacht","Startjaar","Afdeling","Jaarloon"])
     for wn, wn_data in personeel.items():
         tabel.append([wn, wn_data["naam"],wn_data["geslacht"],wn_data["startjaar"],
-                      wn_data["afdeling"],wn_data["loon"]])
+                      wn_data["afdeling"],wn_data["loon"]*12])
     print(tabulate(tabel, headers="firstrow", tablefmt="pretty"))
 
 ####################################
@@ -49,7 +48,7 @@ toon_menu()
 keuze = input("geef je keuze in")
 while not keuze == "stop":
     if keuze == "1":
-        break
+        toon_personeel()
     elif keuze == "2":
         break
     elif keuze == "3":
@@ -58,3 +57,4 @@ while not keuze == "stop":
         print("foute invoer")
     toon_menu()
     keuze = input()
+
